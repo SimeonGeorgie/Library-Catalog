@@ -51,13 +51,7 @@ jobs:
     steps:
       - name: Checkout of the repo
         uses: actions/checkout@v4
-      - name: Deploy to production
-        uses: johnbeynon/render-deploy-action@v0.0.8
-        with:
-          service-id: ${{ secrets.SERVICE_ID }}
-          api-key: ${{ secrets.RENDER_TOKEN }}
-          wait-for-success: true
-      - name: Deploy frontend  to production
+      - name: Deploy as static site  to production
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
             service-id: ${{ secrets.STATIC_SITE_ID }}
