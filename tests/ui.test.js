@@ -10,9 +10,13 @@ test ('Verify User\'s email address is visible', async({page}) => {
     
     await page.fill('input[name="email"]', 'peter@abv.bg');
     await page.fill('input[name="password"]', '123456');
+    
     await page.click('input[type="submit"]');
 
-    const emailAddress = await page.getByText('peter@abv.bg');
+
+    await page.waitForURL('http://localhost:3000/catalog');
+
+    const emailAddress = await page.getByText('Welcome, peter@abv.bg');
     
     const isemailAddressVisible = await emailAddress.isVisible()
 
@@ -480,7 +484,7 @@ test('Login check Details page buttons', async ({ page}) => {
 
     await page.waitForSelector('.book-information');
     
-    const detailsPageEdit = await page.$('.book-information .actions a.button').textContent();
+    const detailsPageEdit = await page.textContent('.book-information .actions a.button');
     const expectedText = 'Edit';
     expect(detailsPageEdit).toContain(expectedText);
 })

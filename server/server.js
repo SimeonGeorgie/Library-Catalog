@@ -1342,7 +1342,12 @@
         },
         sessions: {}
     };
-    var seedData = {};
+    var seedData = {
+        books: {},
+        likes: {
+
+        }
+    };
     var rules$1 = {
         users: {
             ".create": false,
