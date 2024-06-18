@@ -34,8 +34,6 @@ jobs:
       run: npm start &
       env:
         CI: true
-    - name: Sleep for 5 seconds
-      run: sleep 5
   
   run-tests:
     runs-on: ubuntu-latest
@@ -55,6 +53,10 @@ jobs:
         run: npm install
       - name: Install playwright
         run: npx playwright install
+      - name: Wait for the server to be ready
+        run: |
+          echo "Waiting for the server to be ready..."
+          npx wait-on http://localhost:3000
       - name: Run playwright tests
         run: npx playwright test tests
         
