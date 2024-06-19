@@ -56,4 +56,3 @@ jobs:
         with:
             service-id: ${{ secrets.STATIC_SITE_ID }}
             api-key: ${{ secrets.RENDER_TOKEN }}
-            wait-for-success: true
